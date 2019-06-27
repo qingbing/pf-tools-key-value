@@ -8,7 +8,7 @@
 CREATE TABLE IF NOT EXISTS `pub_key_value` (
   `group` VARCHAR (50) NOT NULL COMMENT '键值对类别',
   `key` VARCHAR (50) NOT NULL COMMENT '键-值（键）',
-  `value` VARCHAR (50) DEFAULT NULL COMMENT '键-值（值）',
+  `value` VARCHAR (50) NOT NULL DEFAULT '' COMMENT '键-值（值）',
   `sort_order` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   `is_enable` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用',
   UNIQUE KEY `uk_group_key`(`group`, `key`),
