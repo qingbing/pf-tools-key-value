@@ -9,12 +9,12 @@ CREATE TABLE IF NOT EXISTS `pub_key_value` (
   `group` VARCHAR (50) NOT NULL COMMENT '键值对类别',
   `key` VARCHAR (50) NOT NULL COMMENT '键-值（键）',
   `value` VARCHAR (50) DEFAULT NULL COMMENT '键-值（值）',
-  `sort_order` tinyint(4) NOT NULL DEFAULT '0' COMMENT '排序',
-  `is_enable` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否启用',
-  UNIQUE KEY(`group`, `key`),
-  KEY(`is_enable`),
-  KEY(`key`),
-  KEY(`sort_order`)
+  `sort_order` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
+  `is_enable` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用',
+  UNIQUE KEY `uk_group_key`(`group`, `key`),
+  KEY `idx_is_enable`(`is_enable`),
+  KEY `idx_key`(`key`),
+  KEY `idx_sort_order`(`sort_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='公用键值对-对应表';
 
 
@@ -24,3 +24,4 @@ INSERT INTO `pub_key_value` (`group`, `key`, `value`, `sort_order`, `is_enable`)
 
 INSERT INTO `pub_key_value` (`group`, `key`, `value`, `sort_order`, `is_enable`) VALUES ('nav-mod', 'background', '后台管理', '1', '0');
 INSERT INTO `pub_key_value` (`group`, `key`, `value`, `sort_order`, `is_enable`) VALUES ('nav-mod', 'front', '网站前台', '2', '1');
+
